@@ -16,6 +16,8 @@ function Sidebar() {
   const menuOption = (
     <>
       <NewDocumentButton />
+
+      {/**  */}
     </>
   );
   return (
