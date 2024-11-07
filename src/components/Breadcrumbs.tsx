@@ -24,7 +24,9 @@ function Breadcrumbs() {
           if (!segment) return null;
           const href = `/${segments.slice(0, index + 1).join("/")}`;
           const isLast = index === segments.length - 1;
-
+          {
+            /* ERROR on docs breadcrum*/
+          }
           return (
             <Fragment key={segment}>
               <BreadcrumbSeparator />
