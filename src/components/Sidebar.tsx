@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import NewDocumentButton from "./NewDocumentButton";
+import SidebarOption from "./SidebarOption";
 import {
   Sheet,
   SheetContent,
@@ -83,7 +84,7 @@ function Sidebar() {
     <>
       <NewDocumentButton />
 
-      <div>
+      <div className="flex py-4 flex-col space-y-4 md:max-w-36">
         {groupedData.owner.length === 0 ? (
           <h2 className="text-gray-500 font-semibold text-sm">
             No documents found
@@ -94,14 +95,24 @@ function Sidebar() {
               My Documents
             </h2>
             {groupedData.owner.map((doc) => (
-              <p>{doc.roomId}</p>
+              <SidebarOption key={doc.id} id={doc.id} href={`/doc/${doc.id}`} />
             ))}
           </>
         )}
       </div>
-      {/**  */}
+      {/**  Shared with Me */}
+      {groupedData.editor.length > 0 && (
+        <>
+          <h2 className="text-gray-500 font-semibold text-sm">
+            Shared with Me
+          </h2>
 
-      {/**  */}
+          {groupedData.editor.map((doc) => (
+            <SidebarOption key={doc.id} id={doc.id} href={`/doc/${doc.id}`} />
+          ))}
+        </>
+      )}
+      {/**  List */}
     </>
   );
   return (
