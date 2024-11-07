@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import NewDocumentButton from "./NewDocumentButton";
 import {
   Sheet,
@@ -32,6 +32,14 @@ interface RoomDocument extends DocumentData {
 
 function Sidebar() {
   const { user } = useUser();
+
+  const [groupedData, setGroupedData] = useState<{
+    owner: RoomDocument[];
+    editor: RoomDocument[];
+  }>({
+    owner: [],
+    editor: [],
+  });
   const [data, loading, error] = useCollection(
     user &&
       query(
@@ -46,13 +54,51 @@ function Sidebar() {
     const grouped = data.docs.reduce<{
       owner: RoomDocument[];
       editor: RoomDocument[];
-    }>();
+    }>(
+      (acc, curr) => {
+        const roomData = curr.data() as RoomDocument;
+
+        if (roomData.role === "owner") {
+          acc.owner.push({
+            id: curr.id,
+            ...roomData,
+          });
+        } else {
+          acc.editor.push({
+            id: curr.id,
+            ...roomData,
+          });
+        }
+        return acc;
+      },
+      {
+        owner: [],
+        editor: [],
+      }
+    );
+    setGroupedData(grouped);
   }, [data]);
 
   const menuOption = (
     <>
       <NewDocumentButton />
 
+      <div>
+        {groupedData.owner.length === 0 ? (
+          <h2 className="text-gray-500 font-semibold text-sm">
+            No documents found
+          </h2>
+        ) : (
+          <>
+            <h2 className="text-gray-500 font-semibold text-sm">
+              My Documents
+            </h2>
+            {groupedData.owner.map((doc) => (
+              <p>{doc.roomId}</p>
+            ))}
+          </>
+        )}
+      </div>
       {/**  */}
 
       {/**  */}
