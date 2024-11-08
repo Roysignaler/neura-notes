@@ -12,7 +12,7 @@ import {
 
 function Breadcrumbs() {
   const path = usePathname();
-  const segments = path.split("/");
+  const segments = path.split("/").filter(Boolean); // Filter out empty segments
 
   return (
     <Breadcrumb>
@@ -21,12 +21,9 @@ function Breadcrumbs() {
           <BreadcrumbLink href="/">Home</BreadcrumbLink>
         </BreadcrumbItem>
         {segments.map((segment, index) => {
-          if (!segment) return null;
           const href = `/${segments.slice(0, index + 1).join("/")}`;
           const isLast = index === segments.length - 1;
-          {
-            /* ERROR on docs breadcrum*/
-          }
+
           return (
             <Fragment key={segment}>
               <BreadcrumbSeparator />
@@ -34,7 +31,7 @@ function Breadcrumbs() {
                 {isLast ? (
                   <BreadcrumbPage>{segment}</BreadcrumbPage>
                 ) : (
-                  <BreadcrumbLink href={href}>{segment}</BreadcrumbLink>
+                  <BreadcrumbLink href={href}>{segment}</BreadcrumbLink> // Directly use BreadcrumbLink without wrapping it in Link
                 )}
               </BreadcrumbItem>
             </Fragment>
