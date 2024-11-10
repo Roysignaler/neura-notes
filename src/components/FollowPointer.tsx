@@ -18,7 +18,7 @@ function FollowPointer({
   const color = stringToColor(info.email || "1");
   return (
     <motion.div
-      className="h-4 w-4 rounded-full absoulute z-50"
+      className="h-4 w-4 rounded-full absolute z-50"
       style={{ top: y, left: x, pointerEvents: "none" }}
       initial={{ scale: 1, opacity: 1 }}
       animate={{ scale: 1, opacity: 1 }}
