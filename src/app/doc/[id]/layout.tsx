@@ -1,15 +1,35 @@
-import React from "react";
-import { auth } from "@clerk/nextjs/server";
+// src/app/doc/[id]/layout.tsx
+"use client";
+
+import React, { useEffect, useState } from "react";
+import { SignedIn, SignedOut, RedirectToSignIn } from "@clerk/nextjs";
+import RoomProvider from "../../../components/RoomProvider";
 
 function DocLayout({
   children,
-  params: { id },
+  params,
 }: {
   children: React.ReactNode;
-  params: { id: string };
+  params: Promise<{ id: string }>; // Define params as a Promise
 }) {
-  auth.protect();
-  return <div>{children}</div>;
+  const [id, setId] = useState<string | null>(null);
+
+  useEffect(() => {
+    params.then((resolvedParams) => setId(resolvedParams.id));
+  }, [params]);
+
+  if (!id) return null; // Optionally, add a loading state here
+
+  return (
+    <>
+      <SignedIn>
+        <RoomProvider roomId={id}>{children}</RoomProvider>
+      </SignedIn>
+      <SignedOut>
+        <RedirectToSignIn />
+      </SignedOut>
+    </>
+  );
 }
 
 export default DocLayout;
