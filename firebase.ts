@@ -8,7 +8,7 @@ const firebaseConfig = {
     projectId: "neura-notes",
     storageBucket: "neura-notes.firebasestorage.app",
     messagingSenderId: "931438039365",
-    appId: process.env.NEXT_PUBLIC_FIREBASE_APPID,
+    appId: "1:931438039365:web:3a98a5446e77c6dd1aae2c",
     measurementId: "G-P0Z2FXM4P1"
   };
 
