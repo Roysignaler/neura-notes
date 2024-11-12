@@ -1,3 +1,5 @@
+import React from 'react'
+
 function stringToColor(str: string) {
     let hash = 0;
     
