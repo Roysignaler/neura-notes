@@ -38,26 +38,28 @@ function Document({ id }: { id: string }) {
   return (
     <div className="flex-1 h-full bg-white p-5">
       <div className="flex max-w-6xl mx-auto justify-between pb-5">
-        <form className="flex flex-1 space-x-2" onSubmit={updateTitle}>
+        <form
+          className="flex flex-1 flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2"
+          onSubmit={updateTitle}
+        >
           {/* Update title */}
           <Input value={input} onChange={(e) => setInput(e.target.value)} />
 
           <Button disabled={isUpdating} type="submit">
             {isUpdating ? "Updating..." : "Update"}
           </Button>
-          {/** IF owner */}
 
           {isOwner && (
-            <>
-              {/* InviteUser */}
+            <div className="flex flex-row space-x-2">
+              {/* Wrap InviteUser */}
+
               <InviteUser />
 
-              {/* DeleteDocument */}
-              <DeleteDocument />
-            </>
-          )}
+              {/* Wrap DeleteDocument */}
 
-          {/* isOwner && InviteUser, DeleteDocument */}
+              <DeleteDocument />
+            </div>
+          )}
         </form>
       </div>
       <div className="flex max-w-6xl mx-auto justify-between items-center mb-5">

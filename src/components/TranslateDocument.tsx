@@ -21,7 +21,7 @@ import {
 
 import { Button } from "./ui/button";
 import { toast } from "sonner";
-import { BotIcon } from "lucide-react";
+import { BotIcon, Languages } from "lucide-react";
 import Markdown from "react-markdown";
 
 type Language =
@@ -89,7 +89,10 @@ function TranslateDocument({ doc }: { doc: Y.Doc }) {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <Button asChild variant="outline">
-        <DialogTrigger>Translate</DialogTrigger>
+        <DialogTrigger>
+          <Languages className="" />
+          Translate
+        </DialogTrigger>
       </Button>
       <DialogContent>
         <DialogHeader>

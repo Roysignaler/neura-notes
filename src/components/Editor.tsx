@@ -74,7 +74,7 @@ function Editor() {
   }`;
   return (
     <div className="max-w-6xl mx-auto">
-      <div className="flex items-center gap-2 justify-end mb-10">
+      <div className="flex flex-col-6 sm:flex-row sm:items-center gap-2 justify-end mb-10">
         {/** TraslateDocument AI*/}
 
         <TranslateDocument doc={doc} />
@@ -83,9 +83,11 @@ function Editor() {
         <ChatToDocument doc={doc} />
 
         {/** Dark Mode */}
-        <Button className={style} onClick={() => setDarkMode(!darkMode)}>
-          {darkMode ? <SunIcon /> : <MoonIcon />}
-        </Button>
+        <div className="hidden md:block">
+          <Button className={style} onClick={() => setDarkMode(!darkMode)}>
+            {darkMode ? <SunIcon /> : <MoonIcon />}
+          </Button>
+        </div>
       </div>
       {/** BlockNote */}
 

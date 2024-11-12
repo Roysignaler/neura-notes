@@ -61,7 +61,7 @@ function ChatToDocument({ doc }: { doc: Y.Doc }) {
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <Button asChild variant="outline">
         <DialogTrigger>
-          <MessageCircleCode className="mr-2" />
+          <MessageCircleCode className="" />
           Chat to Document
         </DialogTrigger>
       </Button>
