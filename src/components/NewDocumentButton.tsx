@@ -1,5 +1,12 @@
 "use client";
 import React, { useTransition } from "react";
+import {
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  UserButton,
+  useUser,
+} from "@clerk/nextjs";
 import { Button } from "./ui/button";
 import { useRouter } from "next/navigation";
 import { createNewDocument } from "../../actions/actions";
@@ -15,9 +22,17 @@ function NewDocumentButton() {
     });
   };
   return (
-    <Button onClick={handleCreateNewDocument} disabled={isPending}>
-      {isPending ? "Creating.." : "New Document"}
-    </Button>
+    <>
+      <SignedOut>
+        <SignInButton />
+      </SignedOut>
+
+      <SignedIn>
+        <Button onClick={handleCreateNewDocument} disabled={isPending}>
+          {isPending ? "Creating.." : "New Document"}
+        </Button>
+      </SignedIn>
+    </>
   );
 }
 

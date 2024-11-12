@@ -6,7 +6,6 @@ import SidebarOption from "./SidebarOption";
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -20,7 +19,6 @@ import {
 } from "firebase/firestore";
 import { db } from "../../firebase";
 
-import { Button } from "./ui/button";
 import { MenuIcon } from "lucide-react";
 import { useUser } from "@clerk/clerk-react";
 
