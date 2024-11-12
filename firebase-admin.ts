@@ -8,9 +8,7 @@ import {
 
 import { getFirestore } from "firebase-admin/firestore";
 
-const serviceKey = JSON.parse(
-    process.env.FIREBASE_SERVICE_ACCOUNT_KEY as string
-    );
+const serviceKey = require("./service_key.json");
 
 let app: App;
 
