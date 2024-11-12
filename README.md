@@ -2,7 +2,7 @@
 
 This project is a modern web application for co-working with AI-integrations that leverages several advanced tools and technologies for building a scalable, efficient, and secure application. Below is an overview of the tech stack used and how each component contributes to the project's functionality.
 
-Try the [Live version here] (https://neura-notes-roysignalers-projects.vercel.app/).
+Try the [Live version here](https://neura-notes-roysignalers-projects.vercel.app/).
 
 ## Key Features
 
