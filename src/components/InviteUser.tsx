@@ -2,10 +2,8 @@
 import React, { FormEvent, useState, useTransition } from "react";
 import {
   Dialog,
-  DialogClose,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -21,7 +19,6 @@ function InviteUser() {
   const [email, setEmail] = useState("");
   const [isPending, startTransition] = useTransition();
   const pathname = usePathname();
-  const router = useRouter();
 
   const handleInvite = async (e: FormEvent) => {
     e.preventDefault();
